@@ -1,8 +1,18 @@
 {
-  "name": "WARDI-Kamal_13_28022022",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/WARDI-Kamal/WARDI-Kamal_13_28022022.git",
-  "author": "Kamal <kha0s@free.fr>",
-  "license": "MIT"
+  "name": "argent-bank",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.7",
+    "vite": "^2.8.0"
+  }
 }
