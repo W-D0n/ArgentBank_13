@@ -1,44 +1,34 @@
-import { useState } from 'react'
-import logo from './assets/img/logo.svg'
-import './assets/styles/App.css'
+import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
+import Profil from './pages/Profil';
+import Error from './pages/Error';
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+import './assets/styles/App.css';
 
+/**
+ * @namespace App
+ */
+
+/**
+ * The main component. It contains the router.
+ * @memberof App
+ * @function
+ * @return {ReactElement} jsx to be injected in the html
+ */
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<SignIn />} />
+        <Route path="/profil" element={<Profil />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+      <Footer />
+    </Router>
   )
 }
 
