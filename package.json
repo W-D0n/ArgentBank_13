@@ -8,11 +8,22 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
+    "autoprefixer": "^10.4.2",
+    "eslint": "^8.10.0",
+    "prettier": "^2.5.1",
+    "prop-types": "^15.8.1",
+    "react-router-dom": "^6.2.2",
     "vite": "^2.8.0"
-  }
+  },
+  "main": "main.js",
+  "repository": "https://github.com/WARDI-Kamal/WARDI-Kamal_13_28022022.git",
+  "author": "Wardi Kamal <kha0s@free.fr>",
+  "license": "MIT"
 }

@@ -12,3 +12,27 @@
 [![](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)](https://prettier.io/)
 [![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com)
 ---
+
+# SportSee
+
+Create with React App, Vite, Recharts, JsDoc & better-doc
+
+- live [demo (on Vercel)](https://wardi-kamal-12-16022022.vercel.app/) 
+- live [documentation](https://wardi-kamal-12-16022022.vercel.app/)
+
+### Prerequisites
+
+- [NodeJS](https://nodejs.org/en/) v16.13.1
+- [yarn](https://yarnpkg.com/) v1.22.17 (or npm)
+- [Vite](https://vitejs.dev/) v2.8.0 - Local server and building tool (React Template)
+
+### Dependencies
+
+- [React](https://fr.reactjs.org/) v17.0.2
+- [React-dom](https://www.npmjs.com/package/react-dom) v17.0.2
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) v6.2.2
+- [commitlint](https://commitlint.js.org/#/guides-use-prompt) v16.2.1
+- [EsLint](https://eslint.org/) v8.10.0
+- [Prettier](https://prettier.io/) v2.5.1
+- [Autoprefixer](https://github.com/postcss/autoprefixer#browsers) v10.4.2
+- [prop-types](https://www.npmjs.com/package/prop-types)v15.8.1
