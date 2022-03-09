@@ -1,6 +1,11 @@
 import React from 'react'
 
-function Error() {
+/**
+ * Get here when navigation get wrong
+ * 
+ * @returns {reactElement}
+ */
+const Error = () => {
   return (
     <div>Error</div>
   )

@@ -1,8 +1,11 @@
+// Dependencies
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './assets/styles/main.css'
-import App from './App'
 // import { store } from './middleware/store';
+// Components
+import App from './App'
+// Styles
+import './assets/styles/main.css'
 
 /**
  * the root of the app, linked to the #root div in index.html.
@@ -16,8 +19,8 @@ import App from './App'
  */
 
 ReactDOM.render(
-  <React.StrictMode>
+  < React.StrictMode >
     <App />
-  </React.StrictMode>,
+  </React.StrictMode >,
   document.getElementById('root')
 )

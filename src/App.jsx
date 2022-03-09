@@ -1,11 +1,17 @@
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
-import Home from './pages/Home';
-import SignIn from './pages/SignIn';
-import Profil from './pages/Profil';
-import Error from './pages/Error';
+// Dependencies
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+
+
+// Components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import Home from './pages/Home';
+import LogIn from './pages/LogIn';
+import Profile from './pages/Profile';
+import Error from './pages/Error';
+//Style
 import './assets/styles/App.css';
+
 
 /**
  * @namespace App
@@ -17,18 +23,21 @@ import './assets/styles/App.css';
  * @function
  * @return {ReactElement} jsx to be injected in the html
  */
-function App() {
+const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<SignIn />} />
-        <Route path="/profil" element={<Profil />} />
-        <Route path="*" element={<Error />} />
+        <Route path='/' element={<Home />} />
+        <Route path='login' element={<LogIn />} />
+        <Route path='profile' element={<Profile />}>
+          <Route path=':id' element={<Profile />} />
+          {/* <Route path='transaction' element={<Transaction />} /> */}
+        </Route>
+        <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
-    </Router>
+    </BrowserRouter>
   )
 }
 

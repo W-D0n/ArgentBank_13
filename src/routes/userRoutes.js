@@ -1,6 +1,0 @@
-/**
- * 
- */
-// /signup
-// /login
-// /profile
