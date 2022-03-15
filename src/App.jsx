@@ -1,16 +1,13 @@
 // Dependencies
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
-
 // Components
-import Header from './components/layout/Header';
-import Footer from './components/layout/Footer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
-import LogIn from './pages/LogIn';
-import Profile from './pages/Profile';
-import Error from './pages/Error';
-//Style
-import './assets/styles/App.css';
+import LogIn from './pages/Login/LogIn';
+import Profile from './pages/Profile/Profile';
+import Error from './pages/Error/Error';
 
 
 /**

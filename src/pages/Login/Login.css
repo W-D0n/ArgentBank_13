@@ -1,0 +1,30 @@
+.input-remember {
+  display: flex;
+}
+
+.input-remember label {
+  margin-left: 0.25rem;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.input-wrapper label {
+  font-weight: bold;
+}
+
+.input-wrapper input {
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.field-error {
+  border: 1px solid red;
+  background: #ff000024;
+  box-shadow: 0 0 0.5em red;
+  animation: shake 0.2s ease-in-out 0s 2;
+}
