@@ -2,12 +2,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { store } from './app/store';
-
+import store from './app/store';
 // Components
-import App from './App'
+import App from './App/App';
 // Styles
-import './main.css'
+import './main.css';
 
 /**
  * the root of the app, linked to the #root div in index.html.
@@ -27,4 +26,4 @@ ReactDOM.render(
     </Provider>
   </React.StrictMode >,
   document.getElementById('root')
-)
+);

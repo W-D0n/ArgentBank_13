@@ -1,7 +1,11 @@
 // Dependencies
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-// import propTypes from 'prop-types';
+
+// Redux Toolkit logic
+import { userLogOut } from '../../features/auth/authSlice';
 
 // Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,12 +13,21 @@ import { faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import './Header.css';
 
 
-// Temporary variables
-const isConnected = false;
-// const user = useSelector((state) => state.auth.firstName);
-const user = 'Tony';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const isConnected = useSelector((state) => state.auth.isConnected);
+  // const isConnected = true;
+  const user = useSelector((state) => state.auth.firstName);
+
+  /**
+   * Logout function triggered by the click event
+   */
+  const handleLogoutClick = async (e) => {
+    dispatch(userLogOut());
+  };
+
   return (
     <div>
       <nav className='main-nav'>
@@ -23,22 +36,23 @@ const Header = () => {
           <h1 className='sr-only'>Argent Bank</h1>
         </Link>
         <Menu>
-          {!isConnected ? (
-            <Link icon={faUserCircle} className='main-nav-item' to='/login'>
-              <i icon={faUserCircle}></i>
-              Sign In
-            </Link>
-          ) : (
+          {isConnected ? (
             <>
-              <Link className='main-nav-item' to='/login'>
+              { }
+              <Link className='main-nav-item' to='/dashboard'>
                 <i icon={faUserCircle}></i>
-                {user}
+                Profile
               </Link>
-              <Link className='main-nav-item' to='/login'>
+              <Link className='main-nav-item' to='/' onClick={handleLogoutClick}>
                 <i icon={faSignOutAlt}></i>
                 Logout
               </Link>
             </>
+          ) : (
+            <Link icon={faUserCircle} className='main-nav-item' to='/login'>
+              <i icon={faUserCircle}></i>
+              Sign In
+            </Link>
           )}
 
         </Menu>

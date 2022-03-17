@@ -1,8 +1,8 @@
 // Dependencies
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import clearStorage from '../../services/clearStorage'
-import purgeStore from '../../services/clearStorage'
+import clearStorage from '../../common/services/clearStorage'
+import purgeStore from '../../common/services/clearStorage'
 
 
 const Logout = () => {

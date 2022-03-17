@@ -1,31 +1,18 @@
 // Dependencies
 import { useRef, useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 
 // Components
 import { Loader } from '../../components/Loader/Loader'
-// Services
-import AuthService from '../../services/authService'
+// Redux Toolkit logic
+import { userLogIn } from '../../features/auth/authSlice';
 
 // Style
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import styled, { StyledComponent } from 'styled-components';
 import './Login.css'
-
-const users = [
-  {
-    firstName: 'Tony',
-    lastName: 'Stark',
-    email: 'tony@stark.com',
-    password: 'password123'
-  },
-  {
-    firstName: 'Steve',
-    lastName: 'Rogers',
-    email: 'steve@rogers.com',
-    password: 'password456'
-  }
-]
 
 
 /**
@@ -35,37 +22,30 @@ const users = [
  */
 const SignIn = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const userRef = useRef();
-  const errRef = useRef();
 
-  // Redux
-
-
-  //Login informations
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errMsg, setErrMsg] = useState('');
 
-  //Verifications
-  const [isValidPassword, setValidPassword] = useState(false);
-  const [isValidEmail, setValidEmail] = useState(false);
-  const [isChecked, setChecked] = useState(false);
-
-  const [isConnected, setConnected] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  // const isLoading = true;
+  const isConnected = useSelector((state) => state.auth.isConnected);
+  const errMsg = useSelector((state) => state.auth?.status?.message);
+  const status = useSelector((state) => state.auth.status);
 
   // utilisation regex pr validation input
 
-  // Set the focus on input when it's load
+  /**
+   * Set the focus on input when it's load
+   */
   useEffect(() => {
     userRef.current.focus();
-  }, [])
-  // Reset error msg when input values change
+  }, []);
+
   useEffect(() => {
-    setErrMsg('');
-  }, [email, password]);
+    if (isConnected) {
+      navigate("/dashboard")
+    }
+  }, [isConnected]);
 
   /**
    * @function removeError remove decoration of error
@@ -74,27 +54,19 @@ const SignIn = () => {
   const removeError = (e) => {
     e.target.classList.remove("field-error");
   };
+
+  /**
+   * @function handleSubmit Handle submit event
+   * @param {Object} e event
+   * @returns 
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
       return;
     }
+    dispatch()
 
-    AuthService.login(email, password)
-      .then(resolved => {
-        // Solution 2 : init du token avant la nav dans le profil.
-        // utilisation de redux (initialiser le token : ici on set)
-        // principe de get/set, c'est le token qui est transféré entre les pages (vérif un token valide)
-        console.log('resolved :', res.data.body.token)
-        console.log('resolved type :', typeof (resolved))
-        // dans le profile on get
-        navigate('/profile')
-      })
-      .catch(rejected => {
-        console.log(rejected)
-        console.log(rejected.status)
-        setErrMsg(rejected.message)
-      })
     setEmail('');
     setPassword('');
   };
@@ -102,61 +74,56 @@ const SignIn = () => {
   return (
     <main className='main bg-dark'>
       <section className='sign-in-content'>
-        {isLoading ? (
-          <div className="loader-wrapper">
-            <Loader />
-          </div>
-        ) : (
-          <>
-            <i className='fa fa-user-circle sign-in-icon'></i>
-            <h1>Sign In</h1>
-            <form onSubmit={handleSubmit}>
-              <div className='input-wrapper'>
-                <label htmlFor='email'>Username(@mail)</label>
-                <input
-                  type='text'
-                  id='email'
-                  name='email'
-                  ref={userRef} // to catch focus
-                  onChange={(e) => setEmail(e.target.value)}
-                  onFocus={removeError}
-                  autoComplete='off'
-                  value={email}
-                  required
-                />
-              </div>
-              <div className='input-wrapper'>
-                <label htmlFor='password'>Password</label>
-                <input
-                  type='password'
-                  id='password'
-                  name='password'
-                  onChange={(e) => setPassword(e.target.value)}
-                  onFocus={removeError}
-                  autoComplete='off'
-                  value={password}
-                  required
-                />
-                <p
-                  ref={errRef}
-                  className={errMsg ? 'errMsg' : 'offscreen'}
-                  aria-live='assertive'
-                >
-                  {errMsg}
-                </p>
-              </div>
-              <div className='input-remember'>
-                <input
-                  type='checkbox'
-                  id='remember-me'
-                  onChange={(e) => setIsChecked(!IsChecked)}
-                />
-                <label htmlFor='remember-me'>Remember me</label>
-              </div>
-              <button className='sign-in-button'>Sign In</button>
-            </form>
-          </>
-        )}
+        <>
+          {isConnected ? (
+            navigate("/dashboard")
+          ) : (
+            <>
+              <i className='fa fa-user-circle sign-in-icon'></i>
+              <h1>Sign In</h1>
+              <form onSubmit={handleSubmit({ email, password })}>
+                <div className='input-wrapper'>
+                  <label htmlFor='email'>Username(@mail)</label>
+                  <input
+                    type='text'
+                    id='email'
+                    name='email'
+                    ref={userRef} // to catch focus
+                    onChange={(e) => setEmail(e.target.value)}
+                    onFocus={removeError}
+                    autoComplete='off'
+                    value={email}
+                    required
+                  />
+                </div>
+                <div className='input-wrapper'>
+                  <label htmlFor='password'>Password</label>
+                  <input
+                    type='password'
+                    id='password'
+                    name='password'
+                    onChange={(e) => setPassword(e.target.value)}
+                    onFocus={removeError}
+                    autoComplete='off'
+                    value={password}
+                    required
+                  />
+                  {isError && <Error>{errMsg}</Error>}
+                </div>
+                <div className='input-remember'>
+                  <input
+                    type='checkbox'
+                    id='remember-me'
+                    onChange={(e) => setIsChecked(!IsChecked)}
+                  />
+                  <label htmlFor='remember-me'>Remember me</label>
+                </div>
+                <button className='sign-in-button'>Sign In</button>
+              </form>
+            </>
+          )}
+
+        </>
       </section>
       {
         useEffect(() => {
@@ -169,4 +136,9 @@ const SignIn = () => {
   )
 }
 
-export default SignIn
+export default SignIn;
+
+const Error = styled.div`
+  margin-top: 15px;
+  color: red;
+`;

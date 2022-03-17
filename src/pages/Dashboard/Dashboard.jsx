@@ -3,15 +3,15 @@ import { useState } from 'react';
 
 // Components
 import Card from '../../components/AccountCard/AccountCard';
-import { ACCOUNTS_DATA } from '../../data/ACCOUNTS_DATA';
+import { ACCOUNTS_DATA } from '../../app/data/ACCOUNTS_DATA';
 
 // Style
 import '../../components/Button/Button.css';
-import './Profile.css';
+import './Dashboard.css';
 
 /**
  * User informations and list of all transactions.
- * @memberof Profile
+ * @memberof Dashboard
  * 
  * @property {String} firstName
  * @property {String} lastname

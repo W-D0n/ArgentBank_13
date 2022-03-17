@@ -13,7 +13,7 @@
 [![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com)
 ---
 
-# SportSee
+# ArgentBank
 
 Create with React App, Vite, Recharts, JsDoc & better-doc
 
@@ -36,3 +36,47 @@ Create with React App, Vite, Recharts, JsDoc & better-doc
 - [Prettier](https://prettier.io/) v2.5.1
 - [Autoprefixer](https://github.com/postcss/autoprefixer#browsers) v10.4.2
 - [prop-types](https://www.npmjs.com/package/prop-types)v15.8.1
+
+### Prerequisites
+- [NodeJS](https://nodejs.org/en/)  Version 16.13.0 
+- [Visual Studio Code](https://code.visualstudio.com/) or another IDE of your choice
+### Dependencies
+- [React](https://reactjs.org/) Version 17.0.2
+- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) Version 5.3.0
+- [react-redux](https://react-redux.js.org/) Version 7.2.6
+- [redux](https://redux.js.org/) Version 4.1.2
+- [immer](https://www.npmjs.com/package/immer) Version 9.0.6
+- [axios](https://axios-http.com/docs/intro) Version 0.24.0
+- [Styled-components](https://styled-components.com/) Version 5.3.3
+
+### Setup's steps
+
+1 - Backend API
+ - Clone the Backend API on your computer:
+    git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API.git
+
+ - Follow the installation instructions carefully in the readme file provided.
+
+2 - Frontend App
+ - Clone the Frontend App on your computer:
+    git clone https://github.com/WARDI-Kamal/WARDI-Kamal_13_28022022.git
+
+ - Install the packages/dependencies : yarn install
+
+ - Run the Frontend Api, which will then listen on port 3000 by default : yarn dev
+
+ - The App runs on http://localhost:3000/
+
+**Warning !** Currently only 2 users.
+
+### Tony Stark
+- First Name: `Tony`
+- Last Name: `Stark`
+- Email: `tony@stark.com`
+- Password: `password123`
+### Steve Rogers
+- First Name: `Steve`
+- Last Name: `Rogers`
+- Email: `steve@rogers.com`
+- Password: `password456`
+
