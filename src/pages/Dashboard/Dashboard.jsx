@@ -3,7 +3,16 @@ import { useState } from 'react';
 
 // Components
 import Card from '../../components/AccountCard/AccountCard';
-import { ACCOUNTS_DATA } from '../../app/data/ACCOUNTS_DATA';
+
+// Services
+import { REGEX_VALIDSTRING } from '../../constants';
+import { accountsData } from '../../app/data/accountsData';
+// import { getUserProfile, editUserProfile } from '../../features/user/userSlice';
+import {
+  postUserProfile,
+  getUserProfile,
+  setUserProfile
+} from '../../features/services/apiService';
 
 // Style
 import '../../components/Button/Button.css';
@@ -28,15 +37,7 @@ const Profil = () => {
   const [lastName, setLastName] = useState('')
   const [isEditing, setIsEditing] = useState(false)
 
-  const userName = {
-    firstName: 'Tony',
-    lastName: 'Jarvis'
-  }
-
-  // ici je dois appeler le userReducer pour modifier nom/prénom
-  // et utiliser les dispatch pour modifier les infos
   const handleClickEdit = (e) => {
-    // on click render edit name component/form
     setFirstName('');
     setLastName('');
     setIsEditing(!isEditing);
@@ -44,15 +45,11 @@ const Profil = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setFirstName(e);
-    setLastName(e);
+    const firstNameIsValid = REGEX_VALIDSTRING.test(firstName)
+    const lastNameIsValid = REGEX_VALIDSTRING.test(lastName)
+    setFirstName();
+    setLastName();
   }
-
-  /* 
-    comment display les noms et le/les boutons en fonction de l'état dans lequel je veux être, si je veux éditer ou pas les noms (redux je suppose...)
-    comment on remplace un composant react par un autre, et inversement ; comment on revient en arrière (redux aussi ?).
-    il faut garder les infos, et update uniquement si elles changent (ne pas update la DB ni fetch inutilement).
-  */
 
   return (
     <main className='main bg-dark'>

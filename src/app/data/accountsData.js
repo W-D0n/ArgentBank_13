@@ -1,4 +1,7 @@
-export const ACCOUNTS_DATA = [
+/**
+ * Hard Coded of accounts data
+ */
+export const accountsData = [
   {
     id: 1,
     type: 'x8349',

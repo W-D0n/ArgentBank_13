@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 // Redux Toolkit logic
-import { userLogOut } from '../../features/auth/authSlice';
+import { logout } from '../../features/slices/authSlice';
 
 // Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -17,15 +17,15 @@ import './Header.css';
 const Header = () => {
   const dispatch = useDispatch();
 
-  const isConnected = useSelector((state) => state.auth.isConnected);
-  // const isConnected = true;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  // const isAuthenticated = true;
   const user = useSelector((state) => state.auth.firstName);
 
   /**
    * Logout function triggered by the click event
    */
   const handleLogoutClick = async (e) => {
-    dispatch(userLogOut());
+    dispatch(logout());
   };
 
   return (
@@ -36,7 +36,7 @@ const Header = () => {
           <h1 className='sr-only'>Argent Bank</h1>
         </Link>
         <Menu>
-          {isConnected ? (
+          {isAuthenticated ? (
             <>
               { }
               <Link className='main-nav-item' to='/dashboard'>
