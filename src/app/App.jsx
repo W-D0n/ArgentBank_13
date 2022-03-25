@@ -1,5 +1,5 @@
 // Dependencies
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 
 // Components
 import Header from '../components/Header/Header';
@@ -9,11 +9,6 @@ import LogIn from '../pages/Login/LogIn';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import Error from '../pages/Error/Error';
 
-
-/**
- * @namespace App
- */
-
 /**
  * The main component. It contains the router.
  * @memberof App
@@ -21,20 +16,23 @@ import Error from '../pages/Error/Error';
  * @return {ReactElement} jsx to be injected in the html
  */
 const App = () => {
+  const isConnected = useSelector((state) => state.auth.isConnected);
+
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='login' element={<LogIn />} />
-        <Route path='dashboard' element={<Dashboard />}>
-          <Route path=':id' element={<Dashboard />} />
-          {/* <Route path='transaction' element={<Transaction />} /> */}
-        </Route>
+        <Route path='login' element={isConnected ? <Navigate to={'/dashboard'} /> : <Login />} />
+        {isConnected && (
+          <>
+            <Route path='dashboard' element={<Dashboard />} />
+          </>
+        )}
         <Route path='*' element={<Error />} />
-      </Routes>
+      </Routes >
       <Footer />
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }
 

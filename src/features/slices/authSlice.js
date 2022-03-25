@@ -25,8 +25,8 @@ export const login = createAsyncThunk(
         email: creditential.email,
         password: creditential.password
       });
-      resp.data.body.remember = creditential.remember
-      resp.data.body.email = creditential.email
+      resp.data.body.remember = creditential.remember;
+      resp.data.body.email = creditential.email;
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.request.status);

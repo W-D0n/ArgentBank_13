@@ -46,10 +46,6 @@ const Header = () => {
         <Menu>
           {isAuthenticated ? (
             <>
-              <Link className='main-nav-item' to='/dashboard'>
-                <i icon={faUserCircle} aria-hidden={true}></i>
-                Profile
-              </Link>
               <Link className='main-nav-item' to='/' onClick={handleLogout}>
                 <i icon={faSignOutAlt} aria-hidden={true}></i>
                 Logout

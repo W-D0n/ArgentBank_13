@@ -23,12 +23,10 @@ const logIn = () => {
   const { isAuthenticated, error } = useSelector(authenticationState);
   const [creditential, setCreditential] = useState({
     email: '',
-    password: '',
-    remember: false
+    password: ''
   });
 
   const handleInputChange = (e) => {
-    console.log(remember.value)
     const { name, type, checked, value } = e.target;
     setCreditential((previousState) => ({
       ...previousState,

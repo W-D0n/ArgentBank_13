@@ -3,9 +3,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Services
-import { REGEX_VALIDSTRING } from '../../constants';
 import { accountsData } from '../../app/data/accountsData';
-import { authenticationState } from '../../features/slices/authSlice';
 import { getUser, setUser, userCurrentState } from '../../features/slices/userSlice';
 
 // Components
@@ -30,36 +28,28 @@ import './Dashboard.css';
 
 const Profile = () => {
   const dispatch = useDispatch();
-  const [name, setName] = useState({
-    name: '',
-    lastName: '',
-  });
-  
-  console.log('token ?', token)
-  const { firstName, lastName, error } = useSelector(userCurrentState);
-  const { isAuthenticated } = useSelector(authenticationState);
-  // console.log('userCurrentState', userCurrentState)
-  // console.log('firstName', firstName)
-  // console.log('firstName', lastName)
-  // console.log('Name', name)
 
   const [isEditing, setIsEditing] = useState(false);
-  console.log('isAuthenticated', isAuthenticated)
-  console.log('isEditing', isEditing)
+  const [name, setName] = useState({
+    firstName: '',
+    lastName: ''
+  });
 
-  // useEffect(() => dispatch(getUser()), [dispatch]);
+  const { firstName, lastName } = useSelector(userCurrentState);
+
+  console.log('selector Fname : ', firstName)
+  console.log('state name : ', name)
+  console.log('state fname : ', name.firstName)
   useEffect(() => {
-    console.log('useEffect getUser');
     dispatch(getUser())
-  }, [dispatch])
+  }, [dispatch]);
 
-  useEffect(() => setIsEditing(false), [firstName, lastName]);
+  // useEffect(() => setIsEditing(false), [firstName, lastName]);
   /**
    * Event handling wich open the changeName form and set first/last name to empty field
    * @function 
    */
   const handleEditName = () => {
-    console.log('handleEditName')
     setName({ firstName: '', lastName: '' });
     setIsEditing(true);
   }
@@ -77,9 +67,12 @@ const Profile = () => {
     }));
   }
   const handleChangeName = (e) => {
-    console.log('handleChangeName')
     e.preventDefault();
-    dispatch(setUser(name))
+    if (name.firstName === '' || name.lastName === '') {
+      return
+    };
+    dispatch(setUser(name));
+    setIsEditing(false);
   }
   const handleCancelChangeName = () => {
     setIsEditing(false);
@@ -134,7 +127,7 @@ const Profile = () => {
           <>
             <h1>Welcome back
               <br />
-              {name.firstName} {name.lastName} !
+              {firstName} {lastName} !
             </h1>
             <button className='edit-button' type='button' onClick={handleEditName}>Edit Name</button>
           </>

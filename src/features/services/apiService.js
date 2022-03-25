@@ -8,8 +8,10 @@ const BASE_URL = 'http://localhost:3001';
  * @param {*} credential 
  * @returns 
  */
-export const loginRequest = async (credential) => {
-  const response = await axios.post(BASE_URL + '/api/v1/user/login', credential);
+export const loginRequest = async ({ email, password }) => {
+  const response = await axios.post(BASE_URL + '/api/v1/user/login', { email: email, password: password });
+  localStorage.setItem("token", response.data.body.token);
+  sessionStorage.setItem("token", response.data.body.token);
   return response;
 }
 
@@ -35,10 +37,8 @@ export const getUserRequest = (token) => {
  * @returns 
  */
 export const setUserRequest = (token, name) => {
-  console.log('Set')
   return axios.put(
-    // BASE_URL + '/user/dashboard',
-    // BASE_URL + '/api/v1/user/profile',
+    BASE_URL + '/api/v1/user/profile',
     name,
     {
       headers: { authorization: 'Bearer ' + token }
