@@ -1,32 +1,40 @@
 // Dependencies
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 // Redux Toolkit logic
-import { logout } from '../../features/slices/authSlice';
+import { logout, authenticationState } from '../../features/slices/authSlice';
 
 // Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserCircle, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import './Header.css';
+import { useState } from 'react';
 
 
 
 const Header = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  // const isAuthenticated = true;
-  const user = useSelector((state) => state.auth.firstName);
+  const { isAuthenticated } = useSelector(authenticationState);
+  const [isLoginPage, setIsLoginPage] = useState(false)
 
   /**
    * Logout function triggered by the click event
    */
-  const handleLogoutClick = async (e) => {
+  const handleLogout = async (e) => {
     dispatch(logout());
+    navigate('/dashboard');
   };
+  useEffect(() => {
+    if (location === 'login') {
+      setIsLoginPage(true)
+    }
+  }, [])
 
   return (
     <div>
@@ -38,22 +46,23 @@ const Header = () => {
         <Menu>
           {isAuthenticated ? (
             <>
-              { }
               <Link className='main-nav-item' to='/dashboard'>
-                <i icon={faUserCircle}></i>
+                <i icon={faUserCircle} aria-hidden={true}></i>
                 Profile
               </Link>
-              <Link className='main-nav-item' to='/' onClick={handleLogoutClick}>
-                <i icon={faSignOutAlt}></i>
+              <Link className='main-nav-item' to='/' onClick={handleLogout}>
+                <i icon={faSignOutAlt} aria-hidden={true}></i>
                 Logout
               </Link>
             </>
+          ) : location.pathname === "/login" ? (''
           ) : (
             <Link icon={faUserCircle} className='main-nav-item' to='/login'>
-              <i icon={faUserCircle}></i>
+              <i icon={faUserCircle} aria-hidden={true}></i>
               Sign In
             </Link>
-          )}
+          )
+          }
 
         </Menu>
       </nav>

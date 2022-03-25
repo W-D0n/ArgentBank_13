@@ -1,16 +1,15 @@
 //Dependencies
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useNavigate } from "react-router-dom";
 
 // Services
-import { loginUser } from '../services/apiService';
+import { loginRequest } from '../services/apiService';
 import { clearStorages } from '../services/storageService';
+import { resetProfile } from '../slices/userSlice'
 
 /**
  * Authentication logic : check user credentials to give permition to user and logout
  * @memberof authSlice
  */
-
 const initialState = {
   isAuthenticated: false,
   token: '',
@@ -22,11 +21,12 @@ export const login = createAsyncThunk(
   'auth/login',
   async (creditential, thunkAPI) => {
     try {
-      const resp = await loginUser.login({
+      const resp = await loginRequest({
         email: creditential.email,
         password: creditential.password
       });
       resp.data.body.remember = creditential.remember
+      resp.data.body.email = creditential.email
       return resp.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.request.status);
@@ -35,11 +35,10 @@ export const login = createAsyncThunk(
 );
 
 export const logout = () => (dispatch) => {
-  const navigate = useNavigate();
-
+  console.log('resetProfile : ' + resetProfile())
+  dispatch(resetProfile());
   dispatch(resetAuth());
   clearStorages();
-  navigate("/");
 };
 
 
@@ -51,22 +50,18 @@ const authSlice = createSlice({
   },
   extraReducers: {
     [login.fulfilled]: (state, action) => {
-      state.isLoggedIn = true;
+      state.isAuthenticated = true;
       state.token = action.payload.body.token;
       state.remember = action.payload.body.remember;
     },
     [login.rejected]: (state, action) => {
-      state.isLoggedIn = false;
+      state.isAuthenticated = false;
       state.token = null;
       state.remember = null;
-    },
-    [logout.fulfilled]: (state, action) => {
-      state.isLoggedIn = false;
-      state.error = 'error';
-    },
+    }
   },
 });
 
-export const authenticationState = (state) => state.authSlice;
+export const authenticationState = (state) => state.auth;
 export const { resetAuth } = authSlice.actions;
 export default authSlice.reducer;

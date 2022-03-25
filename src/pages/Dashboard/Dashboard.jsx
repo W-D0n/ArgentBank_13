@@ -1,18 +1,15 @@
 // Dependencies
-import { useState } from 'react';
-
-// Components
-import Card from '../../components/AccountCard/AccountCard';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 // Services
 import { REGEX_VALIDSTRING } from '../../constants';
 import { accountsData } from '../../app/data/accountsData';
-// import { getUserProfile, editUserProfile } from '../../features/user/userSlice';
-import {
-  postUserProfile,
-  getUserProfile,
-  setUserProfile
-} from '../../features/services/apiService';
+import { authenticationState } from '../../features/slices/authSlice';
+import { getUser, setUser, userCurrentState } from '../../features/slices/userSlice';
+
+// Components
+import Card from '../../components/AccountCard/AccountCard';
 
 // Style
 import '../../components/Button/Button.css';
@@ -22,7 +19,7 @@ import './Dashboard.css';
  * User informations and list of all transactions.
  * @memberof Dashboard
  * 
- * @property {String} firstName
+ * @property {String} name.
  * @property {String} lastname
  * @property {String} userId
  * @property {String} paramsId
@@ -31,24 +28,61 @@ import './Dashboard.css';
  * @returns {reactElement}
  */
 
-const Profil = () => {
+const Profile = () => {
+  const dispatch = useDispatch();
+  const [name, setName] = useState({
+    name: '',
+    lastName: '',
+  });
+  
+  console.log('token ?', token)
+  const { firstName, lastName, error } = useSelector(userCurrentState);
+  const { isAuthenticated } = useSelector(authenticationState);
+  // console.log('userCurrentState', userCurrentState)
+  // console.log('firstName', firstName)
+  // console.log('firstName', lastName)
+  // console.log('Name', name)
 
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [isEditing, setIsEditing] = useState(false)
+  const [isEditing, setIsEditing] = useState(false);
+  console.log('isAuthenticated', isAuthenticated)
+  console.log('isEditing', isEditing)
 
-  const handleClickEdit = (e) => {
-    setFirstName('');
-    setLastName('');
-    setIsEditing(!isEditing);
+  // useEffect(() => dispatch(getUser()), [dispatch]);
+  useEffect(() => {
+    console.log('useEffect getUser');
+    dispatch(getUser())
+  }, [dispatch])
+
+  useEffect(() => setIsEditing(false), [firstName, lastName]);
+  /**
+   * Event handling wich open the changeName form and set first/last name to empty field
+   * @function 
+   */
+  const handleEditName = () => {
+    console.log('handleEditName')
+    setName({ firstName: '', lastName: '' });
+    setIsEditing(true);
   }
-  const handleSubmit = (e) => {
+
+  /**
+   * Event handling wich render user input
+   * @param {*} event 
+   */
+  const handleInputChange = (e) => {
+    console.log('handleInputChange')
+    const { name, value } = e.target;
+    setName((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  }
+  const handleChangeName = (e) => {
+    console.log('handleChangeName')
     e.preventDefault();
-    e.stopPropagation();
-    const firstNameIsValid = REGEX_VALIDSTRING.test(firstName)
-    const lastNameIsValid = REGEX_VALIDSTRING.test(lastName)
-    setFirstName();
-    setLastName();
+    dispatch(setUser(name))
+  }
+  const handleCancelChangeName = () => {
+    setIsEditing(false);
   }
 
   return (
@@ -57,34 +91,38 @@ const Profil = () => {
         {isEditing ? (
           <>
             <h1>Welcome back<br />
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleChangeName}>
                 <div className="user-input">
                   <label htmlFor='first-name'></label>
                   <input
                     className="user-input-editor"
                     type="text"
                     id="first-name"
-                    placeholder={userName.firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
+                    name="firstName"
+                    placeholder={firstName}
+                    value={name.firstName}
+                    onChange={handleInputChange}
                   />
                   <label htmlFor='last-name'></label>
                   <input
                     className="user-input-editor"
                     type="text"
                     id="last-name"
-                    placeholder={userName.lastName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    name='lastName'
+                    placeholder={lastName}
+                    value={name.lastName}
+                    onChange={handleInputChange}
                   />
                 </div>
                 <div className="edit-buttons">
-                  {/* utiliser component */}
-                  <button className="save-edit-button" type="submit">
+                  <button
+                    className="save-edit-button"
+                  >
                     Save
                   </button>
-                  {/* utiliser component */}
                   <button
                     className="cancel-edit-button"
-                    onClick={() => setIsEditing(false)}
+                    onClick={handleCancelChangeName}
                   >
                     Cancel
                   </button>
@@ -96,22 +134,19 @@ const Profil = () => {
           <>
             <h1>Welcome back
               <br />
-              {userName.firstName} {userName.lastName} !
+              {name.firstName} {name.lastName} !
             </h1>
-            {/* utiliser component */}
-            <button className='edit-button' onClick={handleClickEdit}>Edit Name</button>
+            <button className='edit-button' type='button' onClick={handleEditName}>Edit Name</button>
           </>
         )
         }
       </div>
       <h2 className='sr-only'>Accounts</h2>
-      {ACCOUNTS_DATA.map((e, i) => (
+      {accountsData.map((e, i) => (
         <Card key={i} type={e.type} title={e.title} amount={Number(e.amount)} description={e.description} isNegative={Math.sign(e.amount) < 0 ? true : false} />
       ))}
     </main>
   )
 }
 
-const userIdentity = () => { }
-
-export default Profil
+export default Profile

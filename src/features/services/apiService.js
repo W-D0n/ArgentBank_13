@@ -1,50 +1,48 @@
 //Dependencies
 import axios from 'axios';
-//Services
-import { API_URL } from '../../constants';
 
-/**
- * Axios config
- */
-axios.defaults.baseURL = 'http://localhost:3001/api/v1';
-axios.defaults.headers.common['accept'] = `application/json`;
-axios.defaults.headers.common['Content-Type'] = `application/json`;
+const BASE_URL = 'http://localhost:3001';
 
 /**
  * 
  * @param {*} credential 
  * @returns 
  */
-export const loginUser = async (credential) => {
-  const response = await axios.post('user/login', credential);
+export const loginRequest = async (credential) => {
+  const response = await axios.post(BASE_URL + '/api/v1/user/login', credential);
   return response;
 }
 
 /**
-* the get user profile request function (POST). should return the user info on success.
+* the get user profile request function (GET). should return the user info on success.
 * @memberof apiService
 * @function
 * @param {string} token - the authentification token (JWT)
 * @returns {object} - api response
 */
-export const postUserProfile = async (token) => {
+export const getUserRequest = (token) => {
   return axios.post(
-    API_URL + '/user/profile',
+    BASE_URL + '/api/v1/user/profile',
     {},
     { headers: { authorization: 'Bearer ' + token } }
   );
 };
-export const getUserProfile = async (token) => {
-  return axios.get(
-    API_URL + '/user/profile',
-    {},
-    { headers: { authorization: 'Bearer ' + token } }
-  );
-};
-export const setUserProfile = async () => {
-  return axios.put(API_URL + '/user/profile', name, {
-    headers: { authorization: 'Bearer ' + token },
-  });
+
+/**
+ * 
+ * @param {*} token 
+ * @param {*} name 
+ * @returns 
+ */
+export const setUserRequest = (token, name) => {
+  console.log('Set')
+  return axios.put(
+    // BASE_URL + '/user/dashboard',
+    // BASE_URL + '/api/v1/user/profile',
+    name,
+    {
+      headers: { authorization: 'Bearer ' + token }
+    });
 }
 
 

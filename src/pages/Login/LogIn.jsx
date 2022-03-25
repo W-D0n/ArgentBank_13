@@ -4,15 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Services
-// import { loginService } from '../../features/user/userService';
-// import { loginService, logoutService } from '../../features/auth/authSlice';
+import { login, authenticationState } from '../../features/slices/authSlice';
 
 // Style
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 import './Login.css'
-import { login, authenticationState } from '../../features/slices/authSlice';
 
 /**
  * Contain the authentification's form 
@@ -21,6 +19,7 @@ import { login, authenticationState } from '../../features/slices/authSlice';
 const logIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { isAuthenticated, error } = useSelector(authenticationState);
   const [creditential, setCreditential] = useState({
     email: '',
@@ -29,6 +28,7 @@ const logIn = () => {
   });
 
   const handleInputChange = (e) => {
+    console.log(remember.value)
     const { name, type, checked, value } = e.target;
     setCreditential((previousState) => ({
       ...previousState,
@@ -36,17 +36,14 @@ const logIn = () => {
     }))
   }
   const handleSubmit = (e) => {
-    console.log('email :', creditential.email)
-    console.log('password :', creditential.password)
-    console.log('credential :', creditential)
-
     e.preventDefault();
     dispatch(login(creditential));
   }
 
-  return isAuthenticated ? (
-    navigate('/profile')
-  ) : (
+  useEffect(() => {
+    isAuthenticated && navigate('/dashboard');
+  })
+  return (
     <main className='main bg-dark'>
       <section className='sign-in-content'>
         <i className='fa fa-user-circle sign-in-icon'></i>
@@ -76,7 +73,7 @@ const logIn = () => {
               value={creditential.password}
               onChange={handleInputChange}
             />
-            {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+            {error ? <ErrorMessage>hoho</ErrorMessage> : null}
           </div>
           <div className='input-remember'>
             <input
