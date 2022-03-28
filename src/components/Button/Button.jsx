@@ -1,19 +1,9 @@
 // Dependencies
 import styled from "styled-components";
 
-// Components
-
-
 /**
- * les bouttons ont :
- *    - un STYLE commun 
- *    - une ACTION qui diffère selon la page (login, profil : view transaction / edit name)
- *    - il y a 2 bouttons SAVE et CANCEL pour le composant editName
- * 
  * @returns {reactElement}
  */
-
-
 const Button = ({ content, type, fct }) => {
   return (
     <CTA type={type} onClick={fct}>

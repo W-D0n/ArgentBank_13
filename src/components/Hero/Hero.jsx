@@ -1,7 +1,3 @@
-// Dependencies
-import styled from 'styled-components';
-import propTypes from 'prop-types';
-
 // Styles
 import './Hero.css';
 

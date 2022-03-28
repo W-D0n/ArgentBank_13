@@ -1,22 +1,21 @@
 //Dependencies
 import axios from 'axios';
+import { API_URL } from '../../constants'
 
 const BASE_URL = 'http://localhost:3001';
 
 /**
- * 
+ * Request wich should return auth token if credentials are valid
  * @param {*} credential 
- * @returns 
+ * @returns {Object} response return auth response with token in the body
  */
 export const loginRequest = async ({ email, password }) => {
-  const response = await axios.post(BASE_URL + '/api/v1/user/login', { email: email, password: password });
-  localStorage.setItem("token", response.data.body.token);
-  sessionStorage.setItem("token", response.data.body.token);
+  const response = await axios.post(API_URL + '/api/v1/user/login', { email: email, password: password });
   return response;
 }
 
 /**
-* the get user profile request function (GET). should return the user info on success.
+* Request which get user information. should return the user info on success.
 * @memberof apiService
 * @function
 * @param {string} token - the authentification token (JWT)
@@ -24,21 +23,20 @@ export const loginRequest = async ({ email, password }) => {
 */
 export const getUserRequest = (token) => {
   return axios.post(
-    BASE_URL + '/api/v1/user/profile',
+    API_URL + '/api/v1/user/profile',
     {},
     { headers: { authorization: 'Bearer ' + token } }
   );
 };
 
 /**
- * 
+ * Request wich update user information
  * @param {*} token 
  * @param {*} name 
- * @returns 
  */
 export const setUserRequest = (token, name) => {
   return axios.put(
-    BASE_URL + '/api/v1/user/profile',
+    API_URL + '/api/v1/user/profile',
     name,
     {
       headers: { authorization: 'Bearer ' + token }

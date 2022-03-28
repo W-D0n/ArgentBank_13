@@ -1,16 +1,13 @@
-// Dependencies
-// import propTypes from 'prop-types';
-
 // Components
 import '../Button/Button.css';
 import './Account.css';
 
 
 /**
- * Component that show balance of an account
+ * Component which show balance of an account
  * 
  * @param {Srting} title how to call this account
- * @param {Srting} type charset that match with account type xXXXX
+ * @param {Srting} type charset which match with account type xXXXX
  * @param {Number} amount how much money on account
  * @param {Srting} description subtext of account title
  * @param {Boolean} isNegative extra prop to style account card when amount < 0

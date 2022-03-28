@@ -1,0 +1,162 @@
+swagger: '2.0'
+info:
+  description: Contains all available API endpoints in this codebase
+  version: 1.0.0
+  title: Bank Argent API documentation
+  termsOfService: https://smartbear.com/terms-of-use/
+host: localhost:3001
+basePath: /api/v1
+schemes:
+  - http
+paths:
+  /transactions:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Transations
+      summary: All Transactions
+      description: View all transactions for the current month
+      produces:
+        - application/json
+      parameters:
+        - in: header
+          type: string
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      responses:
+        '200':
+          description: User transactions retrieved successully
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Transaction'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /transactions/{transactionId}:
+    get:
+      security:
+        - Bearer: []
+      tags:
+        - User Transations
+      summary: Transaction details
+      description: Show transaction details
+      produces:
+        - application/json
+      parameters:
+        - name: transactionId
+          in: path
+          description: ID of transaction to return
+          required: true
+          type: integer
+        - in: header
+          type: string
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+      responses:
+        '200':
+          description: User transaction retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionId'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Transations
+      summary: Edit Transaction detail
+      description: Modifying transaction details
+      produces:
+        - application/json
+      parameters:
+        - name: transactionId
+          in: path
+          description: ID of transaction to return
+          required: true
+          type: integer
+        - in: header
+          type: string
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: body
+          name: body
+          description: Update transaction attributes
+          required: true
+          schema:
+            $ref: '#/definitions/TransactionModify'
+      responses:
+        '200':
+          description: User transaction updated successully
+          schema:
+            type: object
+            items:
+              $ref: '#/definitions/TransactionModifyResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+definitions:
+  Transaction:
+    type: object
+    properties:
+      id:
+        type: integer
+      date:
+        type: string
+        description: transaction date
+      details:
+        type: string
+        description: transaction description
+      amount:
+        type: number
+        description: transaction amount
+      balance:
+        type: number
+        description: account balance
+      type:
+        type: string
+        description: transaction type
+      category:
+        type: string
+        description: transaction category
+      notes:
+        type: string
+        description: notes field for user
+  TransactionId:
+    type: object
+    properties:
+      id:
+        type: integer
+  TransactionModify:
+    type: object
+    properties:
+      id:
+        type: integer
+      category:
+        type: string
+        description: transaction category
+      notes:
+        type: string
+        description: notes field for user
+  TransactionModifyResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+      type:
+        type: string
+      message:
+        type: string

@@ -17,6 +17,10 @@ const initialState = {
   error: '',
 };
 
+/**
+ * Authentication "actions" logic, which call login API request
+ * @returns {Object} response which contain token
+ */
 export const login = createAsyncThunk(
   'auth/login',
   async (creditential, thunkAPI) => {
@@ -34,14 +38,19 @@ export const login = createAsyncThunk(
   }
 );
 
+/**
+ * @function logout call reset actions from reducers and function which clean session and local storage 
+ */
 export const logout = () => (dispatch) => {
-  console.log('resetProfile : ' + resetProfile())
   dispatch(resetProfile());
   dispatch(resetAuth());
   clearStorages();
 };
 
-
+/**
+ * Authentication "reducer" logic, dispatch actions depending on status of actions
+ *  
+ */
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -58,6 +67,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.token = null;
       state.remember = null;
+      state.error = action.payload
     }
   },
 });

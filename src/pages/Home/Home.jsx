@@ -1,7 +1,3 @@
-// Dependencies
-// import styled from 'styled-components';
-// import propTypes from 'prop-types';
-
 // Components
 import Hero from '../../components/Hero';
 import Feature from '../../components/Feature';
@@ -13,12 +9,11 @@ import './Home.css';
 /**
  * Home page with structure and link to login page
  * @memberof Home
- * 
+ * @param {Object} featuresData a list of features offered by the companie 
  * @returns {reactElement}
  */
 
 const Home = () => {
-
   return (
     <main>
       <Hero />

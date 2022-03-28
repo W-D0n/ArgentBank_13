@@ -14,18 +14,17 @@ import '../../components/Button/Button.css';
 import './Dashboard.css';
 
 /**
- * User informations and list of all transactions.
+ * Page which contain the User informations react/redux calls logic
  * @memberof Dashboard
  * 
  * @property {String} name.
  * @property {String} lastname
  * @property {String} userId
  * @property {String} paramsId
- * 
+ * @property {Object} transactions
  * 
  * @returns {reactElement}
  */
-
 const Profile = () => {
   const dispatch = useDispatch();
 
@@ -35,16 +34,17 @@ const Profile = () => {
     lastName: ''
   });
 
+  // Import state from the store with needed values  
   const { firstName, lastName } = useSelector(userCurrentState);
 
-  console.log('selector Fname : ', firstName)
-  console.log('state name : ', name)
-  console.log('state fname : ', name.firstName)
+  /**
+   * @function handleInputChange on input change, update local state of inputs
+   * @param {*} e event triggered
+   */
   useEffect(() => {
     dispatch(getUser())
   }, [dispatch]);
 
-  // useEffect(() => setIsEditing(false), [firstName, lastName]);
   /**
    * Event handling wich open the changeName form and set first/last name to empty field
    * @function 
@@ -55,9 +55,9 @@ const Profile = () => {
   }
 
   /**
-   * Event handling wich render user input
-   * @param {*} event 
-   */
+   * @function handleInputChange Event handling wich render user input
+   * @param {*} e event triggered
+   */  
   const handleInputChange = (e) => {
     console.log('handleInputChange')
     const { name, value } = e.target;
@@ -66,6 +66,12 @@ const Profile = () => {
       [name]: value,
     }));
   }
+
+  /**
+   * @function handleInputChange Event handling wich render user input
+   * @param {*} e event triggered
+   * @param {Object} name object wich containt
+   */ 
   const handleChangeName = (e) => {
     e.preventDefault();
     if (name.firstName === '' || name.lastName === '') {

@@ -1,5 +1,3 @@
-// Dependencies
-// Components
 //Style
 import './Feature.css';
 
