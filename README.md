@@ -40,9 +40,6 @@ Create with Vite
 - [reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit) v1.8.0
 - [redux-persist](https://github.com/rt2zz/redux-persist) v1.8.0
 
-### Prerequisites
-- [NodeJS](https://nodejs.org/en/)  Version 16.13.0 
-- [Visual Studio Code](https://code.visualstudio.com/) or another IDE of your choice
 
 ### Setup's steps
 
@@ -55,7 +52,7 @@ Create with Vite
 
 2 - Frontend App
  - Clone the Frontend App on your computer:
-    git clone https://github.com/WARDI-Kamal/WARDI-Kamal_13_28022022.git
+    git clone https://github.com/D0natelll0/ArgentBank_13.git
 
  - Install the packages/dependencies : yarn install
 
