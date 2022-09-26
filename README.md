@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/src/assets/img/argentBankLogo.png" width="300px"alt="Sublime's custom image"/>
+  <img src="/src/assets/img/argentBankLogo.png" width="300px"alt="Logo image"/>
 </p>
 
 ---
