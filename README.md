@@ -2,15 +2,16 @@
   <img src="/src/assets/img/argentBankLogo.png" width="300px"alt="Logo image"/>
 </p>
 
----
-[![](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
-[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](/)
-[![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://fr.reactjs.org/)
-[![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
-[![](https://img.shields.io/badge/Redux_Tool_Kit-764ABC?style=flat-square&labelColor=fff&logo=Redux&logoColor=764ABC)](https://redux-toolkit.js.org/introduction/getting-started)
-[![](https://img.shields.io/badge/Styled_components-DB7093?style=flat-square&labelColor=fff&logo=styled-components&logoColor=DB7093)](https://styled-components.com/docs)
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Vite-4b4453?style=flat-square&labelColor=4b4453&logo=vite&logoColor=FFD62E" />
+  <img src="https://img.shields.io/badge/JavaScript-4b4453?style=flat-square&labelColor=4b4453&logo=javascript&logoColor=F7DF1E" />
+  <img src="https://img.shields.io/badge/React-4b4453?style=flat-square&labelColor=4b4453&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&labelColor=4b4453&logo=react-router&logoColor=fff" />
+  <img src="https://img.shields.io/badge/Redux_Tool_Kit-764ABC?style=flat-square&labelColor=fff&logo=Redux&logoColor=764ABC" />
+  <img src="https://img.shields.io/badge/Styled_components-DB7093?style=flat-square&labelColor=fff&logo=styled-components&logoColor=DB7093" />
+</p>
 
+---
 # ArgentBank
 
 
@@ -20,7 +21,7 @@
 - [redux-persist](https://github.com/rt2zz/redux-persist) v1.8.0
 
 
-### Setup
+### Getting Started
 
 1 - Backend API
  - Clone the Backend API : `git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API`
