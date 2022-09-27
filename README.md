@@ -47,14 +47,14 @@
   - Run `npm or yarn or pnpm dev` to run it : http://localhost:3000/
 
 **Currently only 2 users**
-### Tony Stark
-- First Name: `Tony`
-- Last Name: `Stark`
-- Email: `tony@stark.com`
-- Password: `password123`
-### Steve Rogers
-- First Name: `Steve`
-- Last Name: `Rogers`
-- Email: `steve@rogers.com`
-- Password: `password456`
+|             | Tony Stark      | Steve Rogers      |
+|-------------| :------------   | :---------------- |
+|First Name : | `Tony`          | `Steve`           |
+|Last Name :  | `Stark`         | `Rogers`          |
+|Email :      | `tony@stark.com`| `steve@rogers.com`|
+|Password :   | `password123`   | `password456`     |
 
+## Potential improvements / Améliorations possibles
+This project was made for learning a specific concept or tool. Therefore it might appear not complete.  
+If I had to push further this project, I would work on :
+1. Expose the API to publish the app.
