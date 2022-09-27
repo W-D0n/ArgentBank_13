@@ -15,13 +15,13 @@
 ## Summary
 ### Context
 - Mise en situation / Case Study.
-- Remede Agency, une agence spécialisée dans le développement d'applications web est missionnée pour 
+- Remede Agency,  spécialisée dans le développement d'applications web, est missionnée pour la création de l'appli web d'une nouvelle banque / Remede Agence was commissioned to create a web app for a new bank.
 ### Goal / Objectif
-- Création d'application React avec State management (Redux)
-- Authentification
-- Documentation d'API
-- Visualisation/Modification des informations utilisateur
-- Respect des deadlines
+- Création d'application React avec State management (Redux) / Create React app and state management.
+- Authentification / User Authentication.
+- Documentation d'API / Documentation
+- Visualisation/Modification des informations utilisateur / User information display and modification
+- Respect des délais / Compliance with deadlines
 ### My function / Rôle
 - Frontend Developper (new employee)
 
