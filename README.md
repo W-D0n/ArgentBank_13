@@ -12,9 +12,24 @@
 </p>
 
 ---
-# ArgentBank
+## Summary
+### Context
+- Mise en situation / Case Study.
+- Remede Agency, une agence spécialisée dans le développement d'applications web est missionnée pour 
+### Goal / Objectif
+- Création d'application React avec State management (Redux)
+- Authentification
+- Documentation d'API
+- Visualisation/Modification des informations utilisateur
+- Respect des deadlines
+### My function / Rôle
+- Frontend Developper (new employee)
 
-
+## Project
+### Assets
+- Starter HTML code : [Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/designs)
+- Feature guidelines (issues git) : [Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE)
+- Backend repo : [Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
 ### Dependencies
 - [commitlint](https://commitlint.js.org/#/guides-use-prompt) v16.2.1
 - [Axios](https://github.com/axios/axios#installing) v0.26.0
@@ -22,18 +37,15 @@
 
 
 ### Getting Started
-
 1 - Backend API
- - Clone the Backend API : `git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API`
- - Follow the installation instructions carefully in the readme file provided.
+  - Clone the Backend API : `git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API`
+  - Follow the installation instructions carefully in the readme file provided.
 
 2 - Frontend App
- - Clone the Frontend :`git clone https://github.com/D0natelll0/ArgentBank_13.git`
+  - Clone the Frontend :`git clone https://github.com/D0natelll0/ArgentBank_13.git`
+  - Install the packages/dependencies : `npm or yarn or pnpm install`
+  - Run `npm or yarn or pnpm dev` to run it : http://localhost:3000/
 
- - Install the packages/dependencies : `npm or yarn or pnpm install`
- - Run `npm or yarn or pnpm dev` to run it : http://localhost:3000/
-
- 
 **Currently only 2 users**
 ### Tony Stark
 - First Name: `Tony`
