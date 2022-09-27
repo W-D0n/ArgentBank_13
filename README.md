@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=flat-square&logo=vite&logoColor=fff" />
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=000" />
   <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&labelColor=4b4453&logo=react-router&logoColor=fff" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&labelColor=CA4245&logo=react-router&logoColor=fff" />
   <img src="https://img.shields.io/badge/Redux_Tool_Kit-764ABC?style=flat-square&logo=Redux&logoColor=fff" />
   <img src="https://img.shields.io/badge/Styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=fff" />
 </p>
