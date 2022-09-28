@@ -1,5 +1,7 @@
 # Files
 *.code-workspace
+yarn.lock
+
 
 # Logs
 logs
