@@ -37,14 +37,16 @@
 
 
 ### Getting Started
-1 - Backend API
-  - Clone the Backend API : `git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API`
-  - Follow the installation instructions carefully in the readme file provided.
+1 - Backend API  
+  Clone the Backend API : `git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API`  
+  Install dependencies : `pnpm* install`  
+  Follow the installation instructions carefully in the readme file provided.  
 
-2 - Frontend App
-  - Clone the Frontend :`git clone https://github.com/D0natelll0/ArgentBank_13.git`
-  - Install the packages/dependencies : `npm or yarn or pnpm install`
-  - Run `npm or yarn or pnpm dev` to run it : http://localhost:3000/
+2 - Frontend App  
+  Clone the Frontend :`git clone https://github.com/D0natelll0/ArgentBank_13.git`  
+  Install dependencies : `pnpm* install`  
+  Run `pnpm* dev` to run it : http://localhost:3000/  
+  _*use any package manager that suits you_
 
 **Currently only 2 users**
 |             | Tony Stark      | Steve Rogers      |
