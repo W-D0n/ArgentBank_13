@@ -1,75 +1,60 @@
 <p align="center">
-  <img src="/src/assets/img/argentBankLogo.png" width="500px"alt="Sublime's custom image"/>
+  <img src="/src/assets/img/argentBankLogo.png" width="400px"alt="Logo image"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/vite-%23646CFF.svg?style=flat-square&logo=vite&logoColor=fff" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=000" />
+  <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/React_Router-CA4245?style=flat-square&labelColor=CA4245&logo=react-router&logoColor=fff" />
+  <img src="https://img.shields.io/badge/Redux_Toolkit-764ABC?style=flat-square&logo=Redux&logoColor=fff" />
+  <img src="https://img.shields.io/badge/Styled_components-DB7093?style=flat-square&logo=styled-components&logoColor=fff" />
 </p>
 
 ---
-[![](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://fr.reactjs.org/)
-[![](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)](https://reactrouter.com/)
-[![](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)](https://vitejs.dev/)
-[![](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)](https://code.visualstudio.com/)
-[![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)](/)
-[![](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
-[![](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)](https://prettier.io/)
-[![](https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com)
----
+## Summary
+### Context
+- Mise en situation / Case Study.
+- Remede Agency,  spécialisée dans le développement d'applications web, est missionnée pour la création de l'appli web d'une nouvelle banque / Remede Agence was commissioned to create a web app for a new bank.
+### Goal / Objectif
+- Création d'application React avec State management (Redux) / Create React app and state management.
+- Authentification / User Authentication.
+- Documentation d'API / Documentation
+- Visualisation/Modification des informations utilisateur / User information display and modification
+- Respect des délais / Compliance with deadlines
+### My function / Rôle
+- Frontend Developper (new employee)
 
-# ArgentBank
-
-Create with Vite
-
-- [Vite](https://vitejs.dev/) v2.8.0 - Local server and building tool (React Template)
-
-### Prerequisites
-
-- [NodeJS](https://nodejs.org/en/) v16.13.1
-- [yarn](https://yarnpkg.com/) v1.22.17 (or npm)
-
-
+## Project
+### Assets
+- Starter HTML code : [Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/designs)
+- Feature guidelines (issues git) : [Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API/tree/master/.github/ISSUE_TEMPLATE)
+- Backend repo : [Github](https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
 ### Dependencies
-
-- [React](https://fr.reactjs.org/) v17.0.2
-- [React-dom](https://www.npmjs.com/package/react-dom) v17.0.2
-- [React-router-dom](https://v5.reactrouter.com/web/guides/quick-start) v6.2.2
 - [commitlint](https://commitlint.js.org/#/guides-use-prompt) v16.2.1
-- [EsLint](https://eslint.org/) v8.10.0
-- [Prettier](https://prettier.io/) v2.5.1
-- [Autoprefixer](https://github.com/postcss/autoprefixer#browsers) v10.4.2
-- [styled-components](https://github.com/styled-components/styled-components) v5.3.3
 - [Axios](https://github.com/axios/axios#installing) v0.26.0
-- [react-redux](https://github.com/reduxjs/react-redux) v7.2.6
-- [reduxjs/toolkit](https://github.com/reduxjs/redux-toolkit) v1.8.0
 - [redux-persist](https://github.com/rt2zz/redux-persist) v1.8.0
 
 
-### Setup's steps
-
+### Getting Started
 1 - Backend API
- - Clone the Backend API on your computer:
-    git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API
-    
-
- - Follow the installation instructions carefully in the readme file provided.
+  - Clone the Backend API : `git clone https://github.com/OpenClassrooms-Student-Center/Project-13-Bank-API`
+  - Follow the installation instructions carefully in the readme file provided.
 
 2 - Frontend App
- - Clone the Frontend App on your computer:
-    git clone https://github.com/D0natelll0/ArgentBank_13.git
+  - Clone the Frontend :`git clone https://github.com/D0natelll0/ArgentBank_13.git`
+  - Install the packages/dependencies : `npm or yarn or pnpm install`
+  - Run `npm or yarn or pnpm dev` to run it : http://localhost:3000/
 
- - Install the packages/dependencies : yarn install
+**Currently only 2 users**
+|             | Tony Stark      | Steve Rogers      |
+|-------------| :------------   | :---------------- |
+|First Name : | `Tony`          | `Steve`           |
+|Last Name :  | `Stark`         | `Rogers`          |
+|Email :      | `tony@stark.com`| `steve@rogers.com`|
+|Password :   | `password123`   | `password456`     |
 
- - Run the Frontend Api, which will then listen on port 3000 by default : yarn dev
-
- - The App runs on http://localhost:3000/
-
-**Warning !** Currently only 2 users.
-
-### Tony Stark
-- First Name: `Tony`
-- Last Name: `Stark`
-- Email: `tony@stark.com`
-- Password: `password123`
-### Steve Rogers
-- First Name: `Steve`
-- Last Name: `Rogers`
-- Email: `steve@rogers.com`
-- Password: `password456`
-
+## Potential improvements / Améliorations possibles
+This project was made for learning a specific concept or tool. Therefore it might appear not complete.  
+If I had to push further this project, I would work on :
+1. Expose the API to publish the app.
